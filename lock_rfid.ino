@@ -2,10 +2,6 @@
 #include <MFRC522.h>
 #include <Servo.h>
 #include <Wire.h>
-#include <LiquidCrystal_I2C.h>
-
-// Set the LCD address and the number of columns and rows
-LiquidCrystal_I2C lcd(0x3F, 20, 4); // Change the address if necessary
 
 #define RST_PIN         9          // Configurable, see typical pin layout above
 #define SS_PIN          10         // Configurable, see typical pin layout above
@@ -17,16 +13,6 @@ Servo myservo;
 byte knownCard[] = {0x9e, 0x23, 0x68, 0x1d};
 
 void setup() {
-  // Initialize the LCD
-  lcd.init();
-
-  // Turn on the backlight
-  lcd.backlight();
-
-  // Print a message to the LCD
-  lcd.setCursor(0, 0);
-  lcd.print("Hello, LCD!");
-  // put your setup code here, to run once:
   Serial.begin(9600);    // Initialize serial communications with the PC
   while (!Serial);    // Do nothing if no serial port is opened (added for Arduinos based on ATMEGA32U4)
   SPI.begin();      // Init SPI bus
